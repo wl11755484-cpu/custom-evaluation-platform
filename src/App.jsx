@@ -4,6 +4,7 @@ import { TaskProvider } from './contexts/TaskContext';
 import TaskListPage from './pages/TaskListPage';
 import AnnotationPage from './pages/AnnotationPage';
 import AnnotationDetailPage from './pages/AnnotationDetailPage';
+import TaskRedirect from './components/TaskRedirect';
 import './App.css';
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
             <Route path="/" element={<TaskListPage />} />
             <Route path="/annotation/:taskId" element={<AnnotationPage />} />
             <Route path="/annotation/:taskId/:dataIndex" element={<AnnotationDetailPage />} />
+            <Route path="/tasks/:taskId" element={<TaskRedirect />} />
           </Routes>
         </div>
       </Router>
