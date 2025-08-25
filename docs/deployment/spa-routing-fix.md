@@ -6,25 +6,34 @@
 
 ## 解决方案
 
-### 1. 更新 Vercel 配置
+### 1. 更新 Vercel 配置（方案一）
 
-我们已经更新了 `vercel.json` 文件中的重写规则：
+我们已经更新了 `vercel.json` 文件中的重写规则，使用简化的捕获所有模式：
 
 ```json
 {
   "rewrites": [
     {
-      "source": "/((?!api|_next/static|_next/image|favicon.ico|assets).*)",
+      "source": "/(.*)",
       "destination": "/index.html"
     }
   ]
 }
 ```
 
+### 2. 添加 _redirects 文件（方案二）
+
+同时添加了 `public/_redirects` 文件作为备用方案：
+
+```
+/*    /index.html   200
+```
+
 **说明：**
-- 使用负向前瞻正则表达式排除静态资源
-- 确保所有非静态资源的路由都指向 `index.html`
+- 使用简化的捕获所有路由模式
+- 确保所有路由都指向 `index.html`
 - 让 React Router 处理客户端路由
+- 双重保障确保路由正常工作
 
 ### 2. 部署状态检查
 
