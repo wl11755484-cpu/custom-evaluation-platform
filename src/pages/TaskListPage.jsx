@@ -42,20 +42,20 @@ const TaskListPage = () => {
   });
 
   const handleTaskCreated = (taskId) => {
-    // 跳转到任务上传页面
-    navigate(`/tasks/${taskId}`);
+    // 跳转到任务标注页面
+    navigate(`/annotation/${taskId}`);
   };
 
   const handleTaskClick = (task) => {
     if (task.status === '待上传') {
-      navigate(`/tasks/${task.taskId}`);
+      navigate(`/annotation/${task.taskId}`);
     } else {
-      navigate(`/tasks/${task.taskId}/annotation`);
+      navigate(`/annotation/${task.taskId}`);
     }
   };
 
   const handleDeleteTask = (taskId, taskName) => {
-    if (window.confirm(`确定要删除任务 "${taskName}" 吗？此操作不可撤销。`)) {
+    if (window.confirm(`确定要删除任务 \"${taskName}\" 吗？此操作不可撤销。`)) {
       deleteTask(taskId);
     }
   };
